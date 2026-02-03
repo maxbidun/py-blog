@@ -6,7 +6,7 @@
   <h1>{{ post.title }}</h1>
 
 <p>
-    Author: {{ post.owner }} |
+    Author: {{ post.author }} |
     Created: {{ post.created_time }}
 </p>
 
@@ -17,9 +17,9 @@
   <h2>Commentary:</h2>
   {% for comment in post.comments.all %}
       <div class="comment">
-        <p>{{ comment.content }}</p>
+        <p>{{ comment.text }}</p>
         <small>
-            {{ comment.user }} | {{ comment.created_time }}
+            {{ comment.author }} | {{ comment.created_time }}
         </small>
     </div>
 {% empty %}
