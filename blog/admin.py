@@ -1,6 +1,6 @@
 from django.contrib import admin
 from django.contrib.auth.models import Group
-from blog.models import User, Post, Comment
+from blog.models import User, Post, Commentary
 
 admin.site.unregister(Group)
 
@@ -14,15 +14,15 @@ class UserAdmin(admin.ModelAdmin):
 
 @admin.register(Post)
 class PostAdmin(admin.ModelAdmin):
-    list_display = ("id", "title", "author", "created_time")
+    list_display = ("id", "title", "owner", "created_time")
     search_fields = ("title", "content")
-    list_filter = ("created_time", "author")
+    list_filter = ("created_time", "owner")
     ordering = ("-created_time",)
 
 
-@admin.register(Comment)
+@admin.register(Commentary)
 class CommentAdmin(admin.ModelAdmin):
-    list_display = ("id", "author", "post", "content", "created_time")
+    list_display = ("id", "user", "post", "content", "created_time")
     search_fields = ("content", "user__username", "post__title")
-    list_filter = ("created_time", "author", "post")
+    list_filter = ("created_time", "user", "post")
     ordering = ("-created_time",)
