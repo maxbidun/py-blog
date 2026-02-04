@@ -21,7 +21,7 @@ from django.shortcuts import redirect
 
 class PostListView(generic.ListView):
     model = Post
-    context_object_name = "post_list"
+    context_object_name = "posts"
     template_name = "blog/index.html"
     paginate_by = 5
     ordering = ["-created_time"]
